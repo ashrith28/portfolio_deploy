@@ -27,4 +27,4 @@ jobs:
 
     - name: Copy portfolio files to S3
       run: |
-        aws s3 sync . s3://ashrith-portfolio --delete --exclude ".git/*" --exclude ".github/*"
+        aws s3 sync . s3://ashrith-bucket-name --delete --exclude ".git/*" --exclude ".github/*"

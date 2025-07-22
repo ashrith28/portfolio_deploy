@@ -1,0 +1,30 @@
+name: Portfolio Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v2
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Create S3 Bucket (ignore error if it exists)
+      run: |
+        BUCKET_NAME="ashrith-portfolio"
+        aws s3api create-bucket --bucket $BUCKET_NAME --region us-east-1 || echo "Bucket may already exist, continuing..."
+
+    - name: Copy portfolio files to S3
+      run: |
+        aws s3 sync . s3://ashrith-portfolio --delete --exclude ".git/*" --exclude ".github/*"

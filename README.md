@@ -86,6 +86,8 @@ Automatically syncs files and cleans up old assets on every push to `main`.
 
 
 👨‍💻 Author
+
 Ashrith
+
 GitHub: ashrith28
 

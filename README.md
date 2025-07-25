@@ -8,13 +8,21 @@ This project automates the deployment of a personal portfolio website to an AWS 
 
 
 ├── .github/
+
 │ └── workflows/
+
 │ └── main.yml
+
 ├── portfolio_deploy/
+
 │  └── assets/
+
 │  └──css/
+
 │  └── javascript/
+
 │  └──index.html
+
 ├── README.md
 ---
 
